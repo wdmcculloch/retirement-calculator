@@ -1,0 +1,13 @@
+.app {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.MuiFormControl-root {
+  margin: 1vh 1vh 1vh 1vh;
+}
+
+.MuiContainer-root {
+  display: flex;
+}
+
