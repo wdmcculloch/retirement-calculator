@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Paper, CssBaseline, makeStyles, Box, Container, Button, TextField, Typography, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import SpacingDesign from './context/design.jsx';
-
-const useStyles = makeStyles((theme) => ({
-
-}))
+import Chart from './Chart.jsx';
 
 const App = (props) => {
   const [initial, setInitial] = useState(0);
@@ -13,7 +11,8 @@ const App = (props) => {
   const [years, setYears] = useState(0);
   const [growth, setGrowth] = useState(0);
   const [variance, setVariance] = useState(0);
-  let final;
+  const [currentYear, setcurrentYear] = useState(2021);
+  const [data, setData] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -30,42 +29,40 @@ const App = (props) => {
       setVariance(Number(e.target.value)/100);
     } else if (e.target.name === 'initial') {
       setInitial(Number(e.target.value));
+    } else if (e.target.name === 'currentYear') {
+      setcurrentYear(Number(e.target.value));
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //calculate total num
-    let data = {
-      'income': income,
-      'contribution': contribution,
-      'years': years,
-      'growth': growth,
-      'variance': variance,
-      'initial': initial
+    let data = [];
+    let tempCont = income * contribution;
+    let sum = tempCont;
+    //iterate for input years - counting up from starting years
+    for (let i = currentYear; i < (currentYear + years); i++) {
+        let obj = {};
+        let tempGrowth
+        if(data.length === 0) {
+            obj.name = i;
+            tempGrowth = sum * growth;
+            sum += tempGrowth;
+            obj.value = sum;
+            data.push(obj);
+        } else {
+            obj.name = i;
+            sum += tempCont;
+            tempGrowth = sum * growth;
+            sum += tempGrowth;
+            obj.value = sum;
+            data.push(obj);
+        }
     }
     console.log(data);
-
-    // let low = [];
-    let mid = [];
-    // let high = [];
-    let cont = income * contribution;
-    console.log(cont);
-    console.log(cont + (cont * growth));
-
-    for (let i = 0; i < years; i++) {
-      let temp;
-      if (i === 0) {
-        mid.push(cont + (cont * growth));
-      } else {
-        mid.push((mid[i - 1] + cont) );
-      }
-    }
-    console.log(mid);
-
+    setData(data);
   }
   return (
-    <Container>
+    <Container display='flex'>
       <CssBaseline />
       <Paper style={{
         marginTop: '3vh',
@@ -87,11 +84,8 @@ const App = (props) => {
           fontSize: '1em'
         }}>
 
-          {/* <TextField id="form-input" type='number' required name='currentYear' label="Current Year" onChange={handleChange} /> */}
-          {/* <TextField id="form-input" type='number' required name='age' label="Current Age" onChange={handleChange} /> */}
-          {/* <TextField id="form-input" type='number' required name='salaryGrowth' label="Annual Salary Growth" onChange={handleChange} helperText='The amount you expect your salary to grow annually'/> */}
-
           <TextField id="form-input" type='number'  required name='initial' label="Initial Savings" onChange={handleChange} helperText='The starting savings value'/>
+          <TextField id="form-input" type='number'  required name='currentYear' label="Current Year" onChange={handleChange} helperText='The current year of the year you want to start saving'/>
           <TextField id="form-input" type='number' required name='income' label="Salary" onChange={handleChange} helperText='Your annual salary'/>
           <TextField id="form-input" type='number' required name='years' label="Years Until Retirement"  onChange={handleChange}
           helperText='Roughly how many more years do you expect to work before you retire?'/>
@@ -109,7 +103,11 @@ const App = (props) => {
           marginRight: '1vh',
         }} onClick={handleSubmit}>Submit</Button>
       </Paper>
+
+      <Chart data={data} />
     </Container>
+
+
   )
 }
 
