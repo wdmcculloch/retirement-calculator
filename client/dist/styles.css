@@ -9,5 +9,6 @@ div.MuiFormControl-root {
 
 .MuiContainer-root {
   display: flex;
+  flex-direction: row;
 }
 
