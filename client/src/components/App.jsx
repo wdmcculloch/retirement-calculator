@@ -59,16 +59,18 @@ const App = (props) => {
         data.push(obj);
       }
     }
-    console.log(data);
     setData(data);
   }
   return (
 
     <Container>
       <CssBaseline />
-      <Form submit={handleSubmit} change={handleChange}/>
 
-      <Chart data={data} />
+      <Box display='flex'>
+        <Form submit={handleSubmit} change={handleChange}/>
+        <Chart data={data} />
+      </Box>
+
     </Container>
   )
 }

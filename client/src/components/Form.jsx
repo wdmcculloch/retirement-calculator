@@ -9,7 +9,7 @@ const Form = (props) => {
   return (
     <Box>
       <Paper style={{
-        marginTop: '3vh',
+        ...SpacingDesign.marginy(3),
         flexBasis: '40%',
         flexGrow: 0.5,
         overflow: 'hidden',
