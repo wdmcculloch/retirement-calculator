@@ -45,13 +45,13 @@ const App = (props) => {
         amount = initial * (1 + mid);
         amount += (income * contribution);
         obj.name = i;
-        obj.mid = Number(amount.toFixed(2));
+        obj.value = Number(amount.toFixed(2));
         data.push(obj);
       } else {
         amount = amount * (1 + mid);
         amount += (income * contribution);
         obj.name = i;
-        obj.mid = Number(amount.toFixed(2));
+        obj.value = Number(amount.toFixed(2));
         data.push(obj);
       }
     }

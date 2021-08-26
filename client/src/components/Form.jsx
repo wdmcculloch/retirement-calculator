@@ -32,8 +32,8 @@ const Form = (props) => {
             helperText='Percentage or you Monthy pay you wish to contribute.' />
           <TextField id="form-input" type='number' required name='growth' label="Estimated Growth Rate" onChange={props.change}
             helperText='How much do you expect your savings to grow each year? (percentage)' />
-          <TextField id="form-input" type='number' required name='variance' label="Growth Rate Variance" onChange={props.change}
-            helperText='Range of interest rates (above and below the rate set above) that you desire to see results for.' />
+          {/* <TextField id="form-input" type='number' required name='variance' label="Growth Rate Variance" onChange={props.change}
+            helperText='Range of interest rates (above and below the rate set above) that you desire to see results for.' /> */}
         </Box>
 
         <Button display='flex' justifycontent='flex-end' color='primary' style={{

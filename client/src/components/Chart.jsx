@@ -5,6 +5,7 @@ import SpacingDesign from './context/design.jsx';
 
 const Chart = (props) => {
   let data = props.data;
+  console.log(data);
   return (
     <Box style={{
       ...SpacingDesign.marginx(3),
@@ -18,7 +19,7 @@ const Chart = (props) => {
       <YAxis />
       <Tooltip/>
       <Legend />
-      <Line type="monotone" dataKey="mid" stroke="#8884d8" />
+      <Line type="monotone" dataKey="value" stroke="#8884d8" />
       {/* <Line type="monotone" dataKey="pv" stroke="#82ca9d" /> */}
     </LineChart>
     </Box>
