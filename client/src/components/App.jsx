@@ -66,7 +66,8 @@ const App = (props) => {
 
       <Box display='flex'>
         <Form submit={handleSubmit} change={handleChange}/>
-        {displayChart ? <Chart data={data}/> : undefined}
+        {/* {displayChart ? <Chart data={data}/> : undefined} */}
+       <Chart data={data}/>
       </Box>
 
     </Container>

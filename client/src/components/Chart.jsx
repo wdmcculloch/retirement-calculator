@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Paper, CssBaseline, makeStyles, Box, Container, Button, TextField, Typography, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
-import { Legend, Tooltip, LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { ResponsiveContainer, Legend, Tooltip, LineChart, Line, CartesianGrid, XAxis, YAxis, Label } from 'recharts';
 import SpacingDesign from './context/design.jsx';
 
 const Chart = (props) => {
@@ -9,17 +9,22 @@ const Chart = (props) => {
     <Box style={{
       ...SpacingDesign.marginx(3),
       ...SpacingDesign.marginy(3)
-      // margin
     }}>
 
-    <LineChart width={600} height={300} data={data}>
-      <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-      <XAxis dataKey="name"/>
-      <YAxis />
-      <Tooltip/>
-      <Legend />
-      <Line type="monotone" dataKey="value" stroke="#8884d8" />
-    </LineChart>
+
+        {/* <ResponsiveContainer width="80%" height='100%'> */}
+          <LineChart data={data} width={700} height={500}>
+
+            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+
+            <XAxis dataKey="name" />
+            <YAxis  />
+
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" />
+          </LineChart>
+        {/* </ResponsiveContainer> */}
     </Box>
   )
 }
