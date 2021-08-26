@@ -11,13 +11,12 @@ const App = (props) => {
   const [contribution, setContribution] = useState(0);
   const [years, setYears] = useState(0);
   const [growth, setGrowth] = useState(0);
-  const [variance, setVariance] = useState(0);
+  const [variance, setVariance] = useState(2);
   const [currentYear, setcurrentYear] = useState(2021);
   const [data, setData] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
-
     if (e.target.name === 'income') {
       setIncome(Number(e.target.value));
     } else if (e.target.name === 'contribution') {
@@ -38,24 +37,21 @@ const App = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = [];
-    let tempCont = income * contribution;
-    let sum = tempCont;
-    //iterate for input years - counting up from starting years
+    let mid = growth;
+    let amount;
     for (let i = currentYear; i < (currentYear + years); i++) {
       let obj = {};
-      let tempGrowth
       if (data.length === 0) {
+        amount = initial * (1 + mid);
+        amount += (income * contribution);
         obj.name = i;
-        tempGrowth = sum * growth;
-        sum += tempGrowth;
-        obj.value = sum;
+        obj.mid = Number(amount.toFixed(2));
         data.push(obj);
       } else {
+        amount = amount * (1 + mid);
+        amount += (income * contribution);
         obj.name = i;
-        sum += tempCont;
-        tempGrowth = sum * growth;
-        sum += tempGrowth;
-        obj.value = sum;
+        obj.mid = Number(amount.toFixed(2));
         data.push(obj);
       }
     }
@@ -76,11 +72,3 @@ const App = (props) => {
 }
 
 export default App;
-
-
-//income
-//percent intended to save per month
-//years until retirement
-//growth rate - yearly
-//growth rate variance
-
