@@ -14,6 +14,7 @@ const App = (props) => {
   const [variance, setVariance] = useState(2);
   const [currentYear, setcurrentYear] = useState(2021);
   const [data, setData] = useState({});
+  const [displayChart, setDisplayChart] = useState(false);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -56,6 +57,7 @@ const App = (props) => {
       }
     }
     setData(data);
+    setDisplayChart(true);
   }
   return (
 
@@ -64,7 +66,7 @@ const App = (props) => {
 
       <Box display='flex'>
         <Form submit={handleSubmit} change={handleChange}/>
-        <Chart data={data} />
+        {displayChart ? <Chart data={data}/> : undefined}
       </Box>
 
     </Container>
