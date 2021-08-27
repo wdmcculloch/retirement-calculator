@@ -14,13 +14,12 @@ const Form = (props) => {
         flexGrow: 0.5,
         overflow: 'hidden',
         borderRadius: '0',
-        width: '40vh'
+        width: '100%'
+
       }}>
         <Box display='flex' flexDirection='column' align='center' style={{
           marginBottom: '1vh',
-          marginLeft: '1vh',
-          marginRight: '1vh',
-          fontSize: '1em'
+          fontSize: '1rem'
         }}>
 
           <TextField id="form-input" type='number' required name='initial' label="Initial Savings" onChange={props.change} helperText='The starting savings value' />
@@ -32,15 +31,16 @@ const Form = (props) => {
             helperText='Percentage or you Monthy pay you wish to contribute.' />
           <TextField id="form-input" type='number' required name='growth' label="Estimated Growth Rate" onChange={props.change}
             helperText='How much do you expect your savings to grow each year? (percentage)' />
-          {/* <TextField id="form-input" type='number' required name='variance' label="Growth Rate Variance" onChange={props.change}
-            helperText='Range of interest rates (above and below the rate set above) that you desire to see results for.' /> */}
         </Box>
 
-        <Button display='flex' justifycontent='flex-end' color='primary' style={{
-          marginBottom: '2vh',
-          marginLeft: '2vh',
-          marginRight: '1vh',
-        }} onClick={props.submit}>Submit</Button>
+        <div id='form-button'>
+          <Button variant='contained'style={{
+            marginBottom: '2vh',
+            marginLeft: '2vh',
+            marginRight: '3vh',
+          }} onClick={props.submit}>Submit
+          </Button>
+        </div>
       </Paper>
     </Box>
 

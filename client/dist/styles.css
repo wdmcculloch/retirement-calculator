@@ -1,4 +1,4 @@
-.app {
+#app {
   margin: 0px;
   padding: 0px;
 }
@@ -7,8 +7,20 @@ div.MuiFormControl-root {
   margin: 1vh 1vh 1vh 1vh;
 }
 
-.MuiContainer-root {
+#form-button {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 1vw;
+  width: 100%;
+}
+
+#form-main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#container {
+  display: flex;
+  justify-content: center;
 }
 

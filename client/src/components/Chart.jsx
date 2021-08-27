@@ -5,13 +5,16 @@ import SpacingDesign from './context/design.jsx';
 
 const Chart = (props) => {
   let data = props.data;
+  console.log(data);
   return (
     <Box style={{
       ...SpacingDesign.marginx(3),
       ...SpacingDesign.marginy(3)
     }}>
 
-
+    <Typography>
+      {``}
+    </Typography>
         {/* <ResponsiveContainer width="80%" height='100%'> */}
           <LineChart data={data} width={700} height={500}>
 
