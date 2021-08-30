@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ThemeProvider, Paper, CssBaseline, makeStyles, Box, Container, Button, TextField, Typography, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { useMediaQuery, ThemeProvider, Paper, CssBaseline, makeStyles, Box, Container, Button, TextField, Typography, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import SpacingDesign from './context/design.jsx';
 import Chart from './Chart.jsx';
@@ -68,14 +68,19 @@ const App = (props) => {
 
           <Typography variant='h2' style={{
             ...SpacingDesign.marginTop(1)
-          }}> Retirement Calculator </Typography>
+          }}>
+            Retirement Calculator
+          </Typography>
+
           <Typography variant='subtitle1' style={{
             ...SpacingDesign.marginx(1)
           }}>
-          Determine how much your money could grow using the power of compound interest.
-        </Typography>
+            Determine how much your money could grow using the power of compound interest.
+          </Typography>
+
           <Form submit={handleSubmit} change={handleChange} />
         </div>
+
         <div id='chart'>
           {displayChart ? <Chart data={data} /> : undefined}
         </div>

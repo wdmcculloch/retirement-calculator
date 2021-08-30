@@ -12,8 +12,8 @@ const Chart = (props) => {
       ...SpacingDesign.marginy(3)
     }}>
 
-    <Typography>
-      {``}
+    <Typography variant='h6'>
+      {`you made a lot of money!!`}
     </Typography>
         {/* <ResponsiveContainer width="80%" height='100%'> */}
           <LineChart data={data} width={700} height={500}>

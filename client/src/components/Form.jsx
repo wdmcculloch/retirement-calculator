@@ -7,7 +7,7 @@ import Chart from './Chart.jsx';
 const Form = (props) => {
 
   return (
-    <Box>
+    <Box id='form'>
       <Paper style={{
         ...SpacingDesign.marginy(3),
         flexBasis: '40%',
@@ -20,7 +20,7 @@ const Form = (props) => {
         <Box display='flex' flexDirection='column' align='center' style={{
           marginBottom: '1vh',
           fontSize: '1rem'
-        }}>
+        }} >
 
           <TextField id="form-input" type='number' required name='initial' label="Initial Savings" onChange={props.change} helperText='The starting savings value' />
           <TextField id="form-input" type='number' required name='currentYear' label="Current Year" onChange={props.change} helperText='The current year of the year you want to start saving' />
