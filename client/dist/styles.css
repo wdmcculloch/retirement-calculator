@@ -21,12 +21,19 @@ div.MuiFormControl-root {
 }
 #container {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: center;
 }
 
-#form {
+#form-chart-container {
+  display: flex;
+}
+
+#chart {
+  padding-left: 1.5vw;
+}
+/* #form {
   width: 100vw;
   max-width: 700px;
-}
+} */
 

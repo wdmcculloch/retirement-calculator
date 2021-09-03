@@ -1,11 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Paper, CssBaseline, makeStyles, Box, Container, Button, TextField, Typography, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
 import { ResponsiveContainer, Legend, Tooltip, LineChart, Line, CartesianGrid, XAxis, YAxis, Label } from 'recharts';
 import SpacingDesign from './context/design.jsx';
+import ChartContext from './context/ChartContext.jsx';
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0
+})
 
 const Chart = (props) => {
-  let data = props.data;
-  console.log(data);
+  let [data, setData] = useContext(ChartContext);
+  let final = data[data.length - 1];
+
+
+
   return (
     <Box style={{
       ...SpacingDesign.marginx(3),
@@ -13,7 +23,7 @@ const Chart = (props) => {
     }}>
 
     <Typography variant='h6'>
-      {`you made a lot of money!!`}
+      {`In ${final.name} you will have ${formatter.format(final.value)}`}
     </Typography>
         {/* <ResponsiveContainer width="80%" height='100%'> */}
           <LineChart data={data} width={700} height={500}>
